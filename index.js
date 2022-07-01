@@ -1,19 +1,20 @@
-const num_bars = 20;
+const els = {
+    num_bars: document.querySelector('#num-bars'),
+    speed_increment: document.querySelector('#speed-increment'),
+    initial_speed: document.querySelector('#initial-speed'),
+};
 let bar_size;
 let bars = [];
 
 function setup(){
     createCanvas(windowWidth, windowHeight);
-    bar_size = {
-        x: windowWidth / 5,
-        y: windowHeight / num_bars,
-    };
     colorMode(HSL);
-    set_up_bars();
+    reset();
 }
 
 function windowResized(){
     resizeCanvas(windowWidth, windowHeight);
+    reset();
 }
 
 function draw(){
@@ -25,16 +26,25 @@ function draw(){
 }
 
 function set_up_bars(){
-    let speed = 1;
-    for(let i = 0; i < num_bars; i++){
+    bars.length = 0;
+    let speed = els.initial_speed.valueAsNumber;
+    for(let i = 0; i < els.num_bars.valueAsNumber; i++){
         bars[i] = new Bar(
             0,
             i * bar_size.y,
             bar_size.x,
             bar_size.y,
             speed,
-            color(i / num_bars * 360, 100, 50)
+            color(i / els.num_bars.valueAsNumber * 360, 100, 50)
         );
-        speed += 1;
+        speed += els.speed_increment.valueAsNumber;
     }
+}
+
+function reset(){
+    bar_size = {
+        x: windowWidth / 5,
+        y: windowHeight / els.num_bars.valueAsNumber,
+    };
+    set_up_bars();
 }

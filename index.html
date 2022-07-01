@@ -9,5 +9,16 @@
         <script src="index.js" defer></script>
     </head>
     <body>
+        <div class="dropdown floating">
+            <div class=dropdown-icon>▼</div>
+            <div class=dropdown-content>
+                <label for="num-bars">Number of Bars</label>
+                <input type="number" name="num-bars" id="num-bars" value="10" oninput="reset()">
+                <label for="speed-increment">Speed Increment</label>
+                <input type="number" name="speed-increment" id="speed-increment" value="1" oninput="reset()">
+                <label for="initial-speed">Initial Speed</label>
+                <input type="number" name="initial-speed" id="initial-speed" value="1" oninput="reset()">
+            </div>
+        </div>
     </body>
 </html>
