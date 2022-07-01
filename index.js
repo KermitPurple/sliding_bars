@@ -25,7 +25,7 @@ function draw(){
 }
 
 function set_up_bars(){
-    let speed = 5;
+    let speed = 1;
     for(let i = 0; i < num_bars; i++){
         bars[i] = new Bar(
             0,
@@ -35,6 +35,6 @@ function set_up_bars(){
             speed,
             color(i / num_bars * 360, 100, 50)
         );
-        speed *= 1.1;
+        speed += 1;
     }
 }
